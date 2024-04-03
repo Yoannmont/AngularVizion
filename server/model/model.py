@@ -4,13 +4,11 @@ import torch
 from PIL import Image
 from urllib.request import urlopen
 import requests
-import os
 import matplotlib.pyplot as plt
-import pathlib
 matplotlib.use('agg')
 
-BASE_PATH = pathlib.Path(__file__).parent
-MODEL = 'detr-resnet-50'
+MODEL = 'facebook/detr-resnet-50'
+REVISION = 'no_timm'
 
 # COCO classes
 CLASSES = [
@@ -52,7 +50,7 @@ def plot_results(pil_img, prob, boxes, labels, path_to_save_to):
 
 
 def process_image(image_link_or_path):
-    processor = DetrImageProcessor.from_pretrained(os.path.join(BASE_PATH, MODEL))
+    processor = DetrImageProcessor.from_pretrained(MODEL, revision=REVISION)
     try:
         urlopen(image_link_or_path)
         image_data = requests.get(image_link_or_path, stream=True).raw
@@ -63,7 +61,7 @@ def process_image(image_link_or_path):
         return image, processor
 
 def predict_image(image, processor, threshold, path_to_save_to):
-    model = DetrForObjectDetection.from_pretrained(os.path.join(BASE_PATH, MODEL))
+    model = DetrForObjectDetection.from_pretrained(MODEL, revision=REVISION)
     
     inputs = processor(images=image, return_tensors='pt')
     outputs = model(**inputs)

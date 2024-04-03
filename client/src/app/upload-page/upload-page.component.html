@@ -1,0 +1,17 @@
+<div class="upload-block">
+    <form [formGroup]="uploadForm_file">
+        <label class="upload-label" for="upload-file">Sélectionnez votre image !</label>
+        <br>
+        <input type="file" class="upload-input" id="upload-file" accept="image/png, image/jpg, image/gif, image/webp" formControlName="image"/>
+        <button type="submit" (click)="submitForm(uploadForm_file)">Soumettre</button>
+    </form>
+
+    <form [formGroup]="uploadForm_link">
+        <label class="upload-label" for="upload-link">Lien de votre image</label>
+        <input type="url" class="upload-input" id="upload-link"  formControlName="link"/>
+        <button type="submit" (click)="submitForm(uploadForm_link)">Soumettre</button>
+    </form>
+
+    <div *ngIf="uploadForm_file.valid">Image chargée</div>
+    <div *ngIf="uploadForm_link.valid">Lien validé</div>
+</div>

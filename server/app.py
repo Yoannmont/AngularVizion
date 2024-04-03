@@ -4,6 +4,7 @@ from flask_cors import CORS
 import os
 from model.model import process_image, predict_image
 import requests
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -22,12 +23,22 @@ for folder in [UPLOAD_FOLDER, PREDICTIONS_FOLDER]:
 def allowed_file(filename):
     return os.path.splitext(os.path.basename(filename))[1].lower() in ALLOWED_EXTENSIONS
 
+def format_form(data):
+    data_keys = [*dict(data).keys()]
+    data_values = [*dict(data).values()]
+    if len(data_values) == 1 and data_values[0] == '':
+        formatted_data = json.loads(data_keys[0])
+        return formatted_data
+    else :
+        return data
 
 @app.post('/predict')
 def predict():
     file = request.files.get('file', None)
-    link = request.form.get('link', None)
+    formatted_form = format_form(request.form)
+    link = formatted_form.get('link', None)
     threshold = float(request.form.get('threshold',0.8))
+    print(request.form)
     
 
     if (file is None or file.filename == ''):
