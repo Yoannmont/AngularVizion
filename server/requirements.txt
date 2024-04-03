@@ -1,0 +1,6 @@
+flask
+transformers
+torchvision
+flask_cors
+python-dotenv
+torch
