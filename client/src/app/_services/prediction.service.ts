@@ -11,16 +11,19 @@ export class PredictionService {
   private readonly BASE_URL : string = 'http://localhost:5000';
   constructor(private httpClient : HttpClient) { }
 
-  predict_image(form : FormGroup) : Observable<any> {
+  predict_image(form : FormGroup, file : Blob) : Observable<any> {
+    const formData = new FormData();
+    formData.append('threshold', form.controls['threshold'].value)
     
-    if (form.contains('image')){
-      const headers = new HttpHeaders().set('Content-Type', 'mulipart/form-data')
-      return this.httpClient.post<any>(this.BASE_URL + '/predict', {'file' : form.controls['image'].value}, {'headers' : headers});
+    if (form.controls['image'].value !== null){
+      formData.append('file', file);
+      const headers = new HttpHeaders()
+      return this.httpClient.post(this.BASE_URL + '/predict', formData, {headers : headers, responseType : "blob"});
     }
     else{
-      console.log(form.controls['link'])
-      const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-      return this.httpClient.post<any>(this.BASE_URL + '/predict', {link : form.controls['link'].value}, {'headers' : headers});
+      formData.append("link", form.controls['link'].value)
+      const headers = new HttpHeaders()
+      return this.httpClient.post(this.BASE_URL + '/predict', formData, {headers: headers, responseType : 'blob'});
     }
   }
 

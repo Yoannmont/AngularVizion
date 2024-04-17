@@ -1,9 +1,7 @@
 import matplotlib
-from transformers import DetrImageProcessor, DetrForObjectDetection, AutoImageProcessor, AutoModelForObjectDetection
+from transformers import DetrImageProcessor, DetrForObjectDetection
 import torch
-from PIL import Image
-from urllib.request import urlopen
-import requests
+import  torchvision.transforms as T
 import matplotlib.pyplot as plt
 matplotlib.use('agg')
 
@@ -33,8 +31,10 @@ COLORS = [[0.000, 0.447, 0.741], [0.850, 0.325, 0.098], [0.929, 0.694, 0.125],
           [0.494, 0.184, 0.556], [0.466, 0.674, 0.188], [0.301, 0.745, 0.933]]
 
 
-def plot_results(pil_img, prob, boxes, labels, path_to_save_to):
-    fig = plt.figure(figsize=(16,10))
+
+def plot_results(pil_img, prob, boxes, labels):
+    fig = plt.figure(figsize=(15,10), facecolor='none')
+    plt.imshow(pil_img)
     
     ax = plt.gca()
     for p, (xmin, ymin, xmax, ymax), c, label in zip(prob, boxes.tolist(), COLORS * 100, labels):
@@ -44,23 +44,16 @@ def plot_results(pil_img, prob, boxes, labels, path_to_save_to):
         text = f'{CLASSES[label]}: {p :0.4f}'
         ax.text(xmin, ymin, text, fontsize=15,
                 bbox=dict(facecolor='yellow', alpha=0.5))
-    plt.axis('off')
-    plt.imshow(pil_img)
-    fig.savefig(path_to_save_to)
+    ax.axis('off')
+    plt.box(False)
+    ax.margins(x=0, y=0)
+
+    return fig
 
 
-def process_image(image_link_or_path):
+
+def predict_image(image, threshold):
     processor = DetrImageProcessor.from_pretrained(MODEL, revision=REVISION)
-    try:
-        urlopen(image_link_or_path)
-        image_data = requests.get(image_link_or_path, stream=True).raw
-    except : 
-        image_data = image_link_or_path
-    finally:
-        image = Image.open(image_data)
-        return image, processor
-
-def predict_image(image, processor, threshold, path_to_save_to):
     model = DetrForObjectDetection.from_pretrained(MODEL, revision=REVISION)
     
     inputs = processor(images=image, return_tensors='pt')
@@ -69,4 +62,5 @@ def predict_image(image, processor, threshold, path_to_save_to):
     target_sizes = torch.tensor([image.size[::-1]])
     results = processor.post_process_object_detection(outputs, target_sizes=target_sizes, threshold=threshold)[0]
 
-    return plot_results(image, results['scores'], results['boxes'], results['labels'], path_to_save_to=path_to_save_to)
+    return plot_results(image, results['scores'], results['boxes'], results['labels'])
+

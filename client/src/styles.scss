@@ -1,3 +1,35 @@
-body{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+*{
+    font-family:  "Libre Franklin";
+    
+    color:white;
 }
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin : 0;
+    padding :0;
+}
+.bottom-border{
+    border-bottom: 0.0625rem solid rgb(60,60,60);
+}
+
+.fadeIn-1{
+    animation : fI1 800ms forwards;
+} 
+
+@keyframes fI1 {
+    0%{
+        opacity: 0;
+    }
+
+    40%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap')
+

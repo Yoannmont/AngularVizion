@@ -1,8 +1,63 @@
-.upload-block{
-    margin-top: 2%;
-    text-align: center;
+$bg-color:rgb(6, 11, 16);
+$second-color: rgb(18, 24, 31);
+$third-color : rgb(27, 33, 39);
+
+
+
+.subtitle {
+  font-weight: 300;
+  font-size: 40px;
+  color: white;
 }
 
-.upload-input{
-    margin : 2%;
+.upload-range {
+  max-width: 22vw;
 }
+
+.upload-card {
+  background-color: $second-color;
+  border: 0.03rem solid #919090;
+  box-shadow: inset 0px 0px 40px 40px $second-color;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.upload-input {
+  max-width: 30vw;
+  min-width: 15vw;
+  border-radius: 5px;
+}
+
+.upload-label {
+  font-size: 1.25em;
+  font-weight: 200;
+}
+
+button {
+  border-radius: 5px;
+  width: 150px;
+}
+
+.row:hover {
+  animation : smoothHover 200ms forwards;
+}
+
+@media screen and (max-width:768px) {
+
+  .subtitle {
+    font-size: 25px;
+  }
+
+}
+
+
+@keyframes smoothHover {
+  0%{
+    background-color: $second-color;
+  }
+
+  100%{
+    background-color: $third-color;
+  }
+}
+
