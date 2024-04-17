@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PredictionService {
-
+  //handles image prediction HTTP request
   private readonly BASE_URL : string = 'http://localhost:5000';
   constructor(private httpClient : HttpClient) { }
 

@@ -1,4 +1,12 @@
+$bg-color:rgb(6, 11, 16);
+$second-color: rgb(18, 24, 31);
+$third-color : rgb(27, 33, 39);
+$border-color : #919090;
+
 .loading{
-    position : absolute;
+    position : fixed;
     top : 45vh;
+    background-color: $second-color;
+    border-radius: 10px;
+    border : 0.07em solid $border-color;
 }

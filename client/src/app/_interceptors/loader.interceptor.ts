@@ -4,6 +4,8 @@ import { inject } from '@angular/core';
 import { finalize } from 'rxjs';
 
 export const loaderInterceptor: HttpInterceptorFn = (req, next) => {
+
+  //Loading interceptor => shows loading spinner when awaiting HTTP response
   const loaderService = inject(LoaderService);
 
   loaderService.show();

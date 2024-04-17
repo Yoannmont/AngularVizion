@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class LoaderService {
+    //Handles loading spinner 
     isLoading = new Subject<boolean>();
     show() {
         this.isLoading.next(true);

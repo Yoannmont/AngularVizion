@@ -2,6 +2,8 @@ $bg-color:rgb(6, 11, 16);
 $second-color: rgb(18, 24, 31);
 $third-color : rgb(27, 33, 39);
 
+$border-color : #919090;
+
 
 
 .subtitle {
@@ -16,7 +18,7 @@ $third-color : rgb(27, 33, 39);
 
 .upload-card {
   background-color: $second-color;
-  border: 0.03rem solid #919090;
+  border: 0.03rem solid $border-color;
   box-shadow: inset 0px 0px 40px 40px $second-color;
   width: 100%;
   border-radius: 5px;
