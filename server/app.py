@@ -11,6 +11,10 @@ CORS(app)
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # Image size limited to 1024 Kb
 
 
+@app.get('')
+def status():
+  return "<p style='color:red'> Status : OK</p>"
+
 @app.post('/predict')
 def predict():
   '''Use POST method to submit an image file or a link.
@@ -49,4 +53,4 @@ def predict():
     return jsonify({'error': str(e)}), 400
 
 if __name__ == "__main__":
-  app.run(debug=True)
+  app.run(debug=True, host='0.0.0.0', port=8000)

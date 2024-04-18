@@ -4,3 +4,4 @@ torchvision
 flask_cors
 python-dotenv
 torch
+matplotlib

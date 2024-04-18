@@ -10,21 +10,22 @@ REVISION = 'no_timm'
 
 # COCO classes
 CLASSES = [
-    'N/A', 'person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus',
-    'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'N/A',
-    'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse',
-    'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'N/A', 'backpack',
-    'umbrella', 'N/A', 'N/A', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis',
-    'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove',
-    'skateboard', 'surfboard', 'tennis racket', 'bottle', 'N/A', 'wine glass',
-    'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich',
-    'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake',
-    'chair', 'couch', 'potted plant', 'bed', 'N/A', 'dining table', 'N/A',
-    'N/A', 'toilet', 'N/A', 'tv', 'laptop', 'mouse', 'remote', 'keyboard',
-    'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'N/A',
-    'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier',
-    'toothbrush'
+    'N/A', 'personne', 'vélo', 'voiture', 'moto', 'avion', 'bus',
+    'train', 'camion', 'bateau', 'feu de signalisation', "borne d'incendie", 'N/A',
+    'panneau stop', 'parcmètre', 'banc', 'oiseau', 'chat', 'chien', 'cheval',
+    'mouton', 'vache', 'éléphant', 'ours', 'zèbre', 'girafe', 'N/A', 'sac à dos',
+    'parapluie', 'N/A', 'N/A', 'sac à main', 'cravate', 'valise', 'frisbee', 'skis',
+    'snowboard', 'ballon de sport', 'cerf-volant', 'batte de baseball', 'gant de baseball',
+    'skateboard', 'surf', 'raquette de tennis', 'bouteille', 'N/A', 'verre à vin',
+    'tasse', 'fourchette', 'couteau', 'cuillère', 'bol', 'banane', 'pomme', 'sandwich',
+    'orange', 'brocoli', 'carotte', 'hot-dog', 'pizza', 'beignet', 'gâteau',
+    'chaise', 'canapé', 'plante en pot', 'lit', 'N/A', 'table à manger', 'N/A',
+    'N/A', 'toilette', 'N/A', 'télévision', 'ordinateur portable', 'souris', 'télécommande', 'clavier',
+    'téléphone portable', 'micro-ondes', 'four', 'grille-pain', 'évier', 'réfrigérateur', 'N/A',
+    'livre', 'horloge', 'vase', 'ciseaux', 'ours en peluche', 'sèche-cheveux',
+    'brosse à dents'
 ]
+
 
 # colors for visualization
 COLORS = [[0.000, 0.447, 0.741], [0.850, 0.325, 0.098], [0.929, 0.694, 0.125],

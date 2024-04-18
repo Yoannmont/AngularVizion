@@ -6,7 +6,9 @@ $border-color : #919090;
 .loading{
     position : fixed;
     top : 45vh;
+    left: calc(50vw - 50px);
     background-color: $second-color;
     border-radius: 10px;
     border : 0.07em solid $border-color;
+    width: fit-content;
 }

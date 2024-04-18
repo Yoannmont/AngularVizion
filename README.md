@@ -1,6 +1,6 @@
-# AngularVision
+# AngularVizion
 
-AngularVision est une application web de reconnaissance d'images développée avec Angular, PyTorch et Flask.
+AngularVizion est une application web de reconnaissance d'images développée avec Angular, PyTorch et Flask.
 L'objectif de ce projet simple est de s'entraîner à l'utilisation simultanée de plusieurs outils tech populaires. 
 L'application permet aux utilisateurs de charger des images et utilise le modèle [DETR-RESNET-50 de Facebook](https://huggingface.co/facebook/detr-resnet-50) pour reconnaître les objets présents dans ces images.
 
@@ -16,14 +16,14 @@ L'application permet aux utilisateurs de charger des images et utilise le modèl
 - Angular : Framework front-end pour le développement de l'interface utilisateur.
 - PyTorch : Bibliothèque d'apprentissage automatique (Machine Learning) utilisé pour le traitement des images. 
 - Flask : Backend en Python pour l'API de prétraitement des images et l'inference du modèle.
-- Docker : Plateforme de conteneurisation de l'application 
+- Docker : Plateforme de conteneurisation de l'application.
 
 ## Installation Normale
 
 1. Cloner le dépôt Git :
 `git clone https://github.com/Yoannmont/AngularVizion.git`
 2. Installation des dépendances :
-`cd AngularVision/client` `npm install`
+`cd AngularVizion/client` `npm install`
 
 3. Démarrer client :
 `cd client`

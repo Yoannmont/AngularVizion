@@ -1,6 +1,11 @@
+$bg-color:rgb(20, 25, 30);
+$second-color: rgb(18, 24, 31);
+$third-color : rgb(27, 33, 39);
+$border-color : #919090;
+
+
 *{
     font-family:  "Libre Franklin";
-    
     color:white;
 }
 
@@ -9,13 +14,19 @@
     margin : 0;
     padding :0;
 }
+
+
 .bottom-border{
     border-bottom: 0.0625rem solid rgb(60,60,60);
 }
 
 .fadeIn-1{
     animation : fI1 800ms forwards;
-} 
+}
+
+body {
+    background-color: $bg-color!important;
+}
 
 @keyframes fI1 {
     0%{

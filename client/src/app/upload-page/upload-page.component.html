@@ -2,12 +2,12 @@
     <h3 class="subtitle text-center my-3 py-3">Détectez les objets de vos images</h3>
 
     <form [formGroup]="uploadForm" class="container upload-card" (ngSubmit)="submitForm()">
-        <div class="row align-items-center bottom-border p-3">
+        <div class="row align-items-center bottom-border p-3 highlight">
             <div class="col-md-5  mx-auto text-center">
                 <label class="upload-label" for="upload-file">Sélectionnez votre image </label>
                 <br>
                 <input type="file" class="upload-input" id="upload-file"
-                    accept="image/png, image/jpeg, image/gif, image/webp" (change)="selectFile($event)"
+                    accept="image/png, image/jpeg, image/gif, image/webp" (change)="onFileSelected($event)"
                     formControlName="image" />
             </div>
             <div class="col-md-2  mx-auto text-center">
@@ -17,25 +17,25 @@
             <div class="col-md-5 mx-auto text-center">
                 <label class="upload-label" for="upload-link">Fournissez le lien de votre image</label>
                 <br>
-                <input type="url" class="upload-input" id="upload-link" formControlName="link" />
+                <input type="url" class="upload-input" id="upload-link" formControlName="link" (blur)="onLinkBlur($event)"/>
             </div>
         </div>
-        <div class="row align-items-center text-center bottom-border p-3">
+        <div class="row align-items-center text-center bottom-border p-3 highlight">
             <div class="col mb-3">
                 <label class="upload-label" for="upload-range">Choississez le seuil de confiance</label>
                 <br>
                 <input type="range" class="form-range upload-range" id="upload-range" formControlName="threshold"
                     min="0.4" max="0.9" step="0.1" />
-                <div class="form-text" style="color:antiquewhite;"> Le modèle n'affichera le label des
+                <div class="indication"> Le modèle n'affichera le label des
                     objets dont il est sûr à au moins
-                    {{uploadForm.controls['threshold'].value*100 | number : '1.0-0'}} %</div>
-                <div class="form-text alert" *ngIf="uploadForm.controls['threshold'].value < 0.61">
+                    <strong>{{uploadForm.controls['threshold'].value*100 | number : '1.0-0'}} %</strong></div>
+                <div class="attention" *ngIf="uploadForm.controls['threshold'].value < 0.61">
                     Attention ! Une valeur trop faible peut entraîner une détection médiocre</div>
             </div>
         </div>
         <div class="row text-center p-3">
             <div class="col text-center">
-                <button type="submit" class="btn btn-secondary">Soumettre</button>
+                <button type="submit" class="btn btn-secondary" [disabled]="uploadForm.valid">Soumettre</button>
 
             </div>
         </div>
@@ -44,16 +44,16 @@
 
 </div>
 
-<div class="container-fluid" *ngIf="this.previewFileURL">
-    <div class="container upload-card py-3 my-3 " >
-        <div class="row align-items-center text-center">
-            <div class="col mx-auto" >
-                <h4> Version originale </h4>
-                <img [src]="this.previewFileURL" alt="previewImage" width="500px" />
+<div class="container-fluid my-3" *ngIf="this.previewFileURL">
+    <div class="container upload-card " >
+        <div class="row align-items-center text-center py-3 my-3">
+            <div class="col-md-6 mx-auto" >
+                <h4 class="upload-label"> Version originale </h4>
+                <img [src]="this.previewFileURL" alt="previewImage" width="50%" />
             </div>
-            <div class="col mx-auto" *ngIf="this.isImageLoaded | async">
-                <h4> Version avec détection </h4>
-                <img [src]="this.predictedFileURL" alt="detectionResult" width="500px" />
+            <div class="col-md-6 align-items-center mx-auto py-3 my-3" *ngIf="this.isImageLoaded | async">
+                <h4 class="upload-label"> Version avec détection </h4>
+                <img [src]="this.predictedFileURL" alt="detectionResult" width="50%" />
             </div>
         </div>
     </div>

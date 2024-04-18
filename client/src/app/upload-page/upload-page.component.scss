@@ -1,10 +1,7 @@
-$bg-color:rgb(6, 11, 16);
+$bg-color:rgb(20, 25, 30);
 $second-color: rgb(18, 24, 31);
 $third-color : rgb(27, 33, 39);
-
 $border-color : #919090;
-
-
 
 .subtitle {
   font-weight: 300;
@@ -13,7 +10,7 @@ $border-color : #919090;
 }
 
 .upload-range {
-  max-width: 22vw;
+  max-width: 50vw;
 }
 
 .upload-card {
@@ -25,7 +22,7 @@ $border-color : #919090;
 }
 
 .upload-input {
-  max-width: 30vw;
+  max-width: 50vw;
   min-width: 15vw;
   border-radius: 5px;
 }
@@ -40,7 +37,14 @@ button {
   width: 150px;
 }
 
-.row:hover {
+.indication{
+  font-size: 0.9em;
+}
+.attention{
+  color : rgb(200,40,60);
+}
+
+.highlight:hover {
   animation : smoothHover 200ms forwards;
 }
 
