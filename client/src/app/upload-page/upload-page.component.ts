@@ -4,11 +4,12 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validatio
 import { PredictionService } from '../_services/prediction.service';
 import { LoadingComponent } from '../loading/loading.component';
 import { Subject } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-upload-page',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, LoadingComponent],
+  imports: [ReactiveFormsModule, CommonModule, LoadingComponent, TranslateModule],
   templateUrl: './upload-page.component.html',
   styleUrl: './upload-page.component.scss'
 })

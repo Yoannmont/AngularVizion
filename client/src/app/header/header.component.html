@@ -1,20 +1,23 @@
-<nav class="container-fluid navbar fixed-top navbar-expand-lg navbar-dark header-block  bottom-border" >
-    <div class="container">
-      <a class="navbar-brand text-center" href="#"><img src="assets/logo.png" routerLink='' class=" logo d-inline-block" alt="Logo" /><h1 class="title">AngularVizion</h1>
-       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="bi bi-three-dots"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link" routerLink="" [routerLinkActiveOptions]="{exact: true}"
-          routerLinkActive="active">Détection</a>
-          <a class="nav-link" routerLink="about" 
-          routerLinkActive="active">À propos</a>
-        </div>
+<nav class="container-fluid navbar fixed-top navbar-expand-lg navbar-dark header-block  bottom-border">
+  <div class="container">
+    <a class="navbar-brand text-center" href="#"><img src="assets/logo.png" routerLink='' class=" logo d-inline-block"
+        alt="Logo" />
+      <h1 class="title">AngularVizion</h1>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="bi bi-three-dots"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" routerLink="" [routerLinkActiveOptions]="{exact: true}"
+          routerLinkActive="active">{{'HEADER.Detection' | translate}}</a>
+        <a class="nav-link" routerLink="about" routerLinkActive="active">{{'HEADER.About' | translate}}</a>
+      </div>
+      <div class="btn-group" aria-label="languages">
+        <button id='en' class="btn btn-secondary" (click)="setLanguage('en')">English</button>
+        <button id='fr' class="btn btn-secondary" (click)="setLanguage('fr')">Français</button>
       </div>
     </div>
-  </nav>
-
-
-                
+  </div>
+</nav>

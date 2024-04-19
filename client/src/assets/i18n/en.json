@@ -1,0 +1,23 @@
+{
+  "HEADER": { "Detection": "Detection", "About": "About" },
+  "ABOUT": {
+    "Desc_t": "Description",
+    "Feat_t": "Features",
+    "Tools_t": "Tools",
+    "Desc_content": "AngularVizion is a web application for image recognition developed with Angular, PyTorch, and Flask. The aim of this simple project is to train in the simultaneous use of several popular tech tools. The application allows users to upload images and uses Facebook's DETR-RESNET-50 model to recognize objects in these images.",
+    "Feat_content": "User interface developed with Angular.<br> Image preprocessing using PyTorch for input data preparation.<br> Object recognition among a set of 91 classes on uploaded images.<br> Display of object recognition results on the user interface.",
+    "Tools_content": "<strong>Angular:</strong> Front-end framework for UI development.<br> <strong>PyTorch:</strong> Machine learning library used for image processing.<br> <strong>Flask:</strong> Python backend for image preprocessing API and model inference.<br> <strong>Docker:</strong> Application containerization platform.<br>"
+  },
+  "UPLOAD" : {
+    "Title" : "Detect objects in your images",
+    "SelectImage" : "Select your image",
+    "or" : "or",
+    "PutLink" : "Provide the link to your image",
+    "Threshold" : "Choose confidence threshold",
+    "Threshold_message" : "The model will display the label of objects it is confident in at least",
+    "Threshold_alert" : "Warning! Too low a value may result in poor detection",
+    "Submit" : "Submit",
+    "Original" : "Original version",
+    "Predicted" : "Predicted version"
+  }
+}
