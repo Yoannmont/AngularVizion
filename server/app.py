@@ -11,9 +11,9 @@ CORS(app)
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # Image size limited to 1024 Kb
 
 
-@app.get('')
-def status():
-  return "<p style='color:red'> Status : OK</p>"
+@app.get('/')
+def check_status():
+  return "<p style='color:green'> Status : OK</p>"
 
 @app.post('/predict')
 def predict():
@@ -53,4 +53,4 @@ def predict():
     return jsonify({'error': str(e)}), 400
 
 if __name__ == "__main__":
-  app.run(debug=True, host='0.0.0.0', port=8000)
+  app.run(debug=True, host='0.0.0.0', port=5000)
