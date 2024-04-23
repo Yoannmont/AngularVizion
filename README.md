@@ -22,7 +22,7 @@ The application allows users to upload images and uses Facebook's [DETR-RESNET-5
 ### 🏡 Setup for local deployment
 
 ![Node.js](	https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-1. Install [Node.js](https://nodejs.org/en) and [Python env] (https://www.python.org/downloads/).
+1. Install [Node.js](https://nodejs.org/en) and [Python env](https://www.python.org/downloads/).
 
 
 2. Clone git repository :
@@ -34,7 +34,7 @@ In terminal :
  - Run `npm install` to install dependencies.
  - Build app by running `ng serve -o` (Default port for client is 4200).
 
-3. Start **Server app**:
+4. Start **Server app**:
 In terminal :
 - Ensure you're in server folder (or run `cd server`)
 - Install libraries by running `pip install -r requirements.txt`
