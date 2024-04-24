@@ -9,7 +9,7 @@ MODEL = 'facebook/detr-resnet-50'
 REVISION = 'no_timm'
 
 # COCO classes
-CLASSES = [
+CLASSES ={'fr' : [
     'N/A', 'personne', 'vélo', 'voiture', 'moto', 'avion', 'bus',
     'train', 'camion', 'bateau', 'feu de signalisation', "borne d'incendie", 'N/A',
     'panneau stop', 'parcmètre', 'banc', 'oiseau', 'chat', 'chien', 'cheval',
@@ -24,8 +24,22 @@ CLASSES = [
     'téléphone portable', 'micro-ondes', 'four', 'grille-pain', 'évier', 'réfrigérateur', 'N/A',
     'livre', 'horloge', 'vase', 'ciseaux', 'ours en peluche', 'sèche-cheveux',
     'brosse à dents'
-]
-
+], 'en' : [
+    'N/A', 'person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus',
+    'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'N/A',
+    'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse',
+    'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'N/A', 'backpack',
+    'umbrella', 'N/A', 'N/A', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis',
+    'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove',
+    'skateboard', 'surfboard', 'tennis racket', 'bottle', 'N/A', 'wine glass',
+    'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich',
+    'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake',
+    'chair', 'couch', 'potted plant', 'bed', 'N/A', 'dining table', 'N/A',
+    'N/A', 'toilet', 'N/A', 'tv', 'laptop', 'mouse', 'remote', 'keyboard',
+    'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'N/A',
+    'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier',
+    'toothbrush'
+]}
 
 # colors for visualization
 COLORS = [[0.000, 0.447, 0.741], [0.850, 0.325, 0.098], [0.929, 0.694, 0.125],
@@ -33,7 +47,7 @@ COLORS = [[0.000, 0.447, 0.741], [0.850, 0.325, 0.098], [0.929, 0.694, 0.125],
 
 
 
-def plot_results(pil_img, prob, boxes, labels):
+def plot_results(pil_img, prob, boxes, labels, lang):
     fig = plt.figure(figsize=(15,10), facecolor='none')
     plt.imshow(pil_img)
     
@@ -42,7 +56,7 @@ def plot_results(pil_img, prob, boxes, labels):
         ax.add_patch(plt.Rectangle((xmin, ymin), xmax - xmin, ymax - ymin,
                                    fill=False, color=c, linewidth=3))
 
-        text = f'{CLASSES[label]}: {p :0.4f}'
+        text = f'{CLASSES[lang][label]}: {p :0.4f}'
         ax.text(xmin, ymin, text, fontsize=15,
                 bbox=dict(facecolor='yellow', alpha=0.5))
     ax.axis('off')
@@ -53,7 +67,7 @@ def plot_results(pil_img, prob, boxes, labels):
 
 
 
-def predict_image(image, threshold):
+def predict_image(image, threshold, lang):
     processor = DetrImageProcessor.from_pretrained(MODEL, revision=REVISION)
     model = DetrForObjectDetection.from_pretrained(MODEL, revision=REVISION)
     
@@ -63,5 +77,5 @@ def predict_image(image, threshold):
     target_sizes = torch.tensor([image.size[::-1]])
     results = processor.post_process_object_detection(outputs, target_sizes=target_sizes, threshold=threshold)[0]
 
-    return plot_results(image, results['scores'], results['boxes'], results['labels'])
+    return plot_results(image, results['scores'], results['boxes'], results['labels'], lang)
 

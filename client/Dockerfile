@@ -6,7 +6,7 @@ WORKDIR /client
 
 RUN npm i
 RUN npm i -g @angular/cli
-COPY . /client
+COPY . .
 
 EXPOSE 4200
 CMD ng serve --host 0.0.0.0

@@ -4,7 +4,7 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validatio
 import { PredictionService } from '../_services/prediction.service';
 import { LoadingComponent } from '../loading/loading.component';
 import { Subject } from 'rxjs';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-upload-page',
@@ -21,7 +21,7 @@ export class UploadPageComponent implements OnInit{
   range_value : number=0.8;
   isImageLoaded! : Subject<boolean>;
   
-  constructor(private formBuilder : FormBuilder, private predictionService : PredictionService){
+  constructor(private formBuilder : FormBuilder, private predictionService : PredictionService, private translateService : TranslateService){
     this.isImageLoaded = new Subject<boolean>();
   }
 
@@ -76,7 +76,7 @@ export class UploadPageComponent implements OnInit{
 
   //sends form to server
   submitForm() : void{
-    this.predictionService.predict_image(this.uploadForm, this.previewFile)
+    this.predictionService.predict_image(this.uploadForm, this.previewFile, this.translateService.currentLang)
     .pipe()
     .subscribe((blob : Blob) => {
         this.predictedFileURL = URL.createObjectURL(blob);

@@ -14,5 +14,6 @@ export class HeaderComponent {
 
   setLanguage(lang: string) {
     this.translate.use(lang);
+    console.log(this.translate.currentLang)
   }
 }

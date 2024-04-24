@@ -19,15 +19,12 @@ def check_status():
 def predict():
   '''Use POST method to submit an image file or a link.
 
-  Examples : 
-     POST method with an image file::
-
-            $ curl -X POST -F file=@"<file.jpeg>" http://localhost:<api_port>/predict
 
   '''
   file = request.files.get('file', None)
   link = request.form.get('link', None)
   threshold = float(request.form.get('threshold', 0.8))
+  lang = request.form.get('lang', 'en')
 
   if (file is None or file.filename == ''):
     if (link is None or link == ''):
@@ -44,7 +41,7 @@ def predict():
       image = link
 
     image = process_image(image)
-    prediction = predict_image(image, threshold=threshold)
+    prediction = predict_image(image, threshold=threshold, lang=lang)
     predictionIOBytes = plot_to_IOBytes(prediction)
 
     return send_file(predictionIOBytes, mimetype=f'image/png')

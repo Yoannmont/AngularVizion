@@ -13,11 +13,16 @@ The application allows users to upload images and uses Facebook's [DETR-RESNET-5
 
 ## Features
 
-- User interface developed with Angular.
+- User interface developed with Angular (and Bootstrap).
 - Image pre-processing using PyTorch for input data preparation.
 - Object recognition from a set of 91 classes on loaded images.
 - Object recognition results displayed on the user interface.
 
+<p align="center">
+
+<img src="preview.png"/>
+
+</p>
 
 ### 🏡 Setup for local deployment
 
