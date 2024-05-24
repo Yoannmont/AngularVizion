@@ -1,19 +1,14 @@
 {
-    "builds": [
-      {
-        "src": "app.py",
-        "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime" : "python3.12" }
-      },
-      {
-        "src": "build_files.sh",
-        "use": "@vercel/static-build",
-        "config": { "distDir": "./" }
-    }],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "app.py"
-      }
-    ]
-  }
+  "builds": [
+    {
+      "src": "app.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app.py"
+    }
+  ]
+}
